@@ -2,9 +2,10 @@
 App to take inventory of a winery
 
 ## Records
-* [Backend](https://github.com/Nestorbd/LaBuenaBodega/tree/master/backend/LaBuenaBodega) - Built with Spring 4
-* [Frontend](https://github.com/Nestorbd/LaBuenaBodega/tree/master/frontend) - Built with Ionic-Angular
-* [DataBase](https://github.com/Nestorbd/LaBuenaBodega/blob/master/backend/Bodega_DB.sql)
+* [Backend](https://github.com/Nestorbd/LaBuenaBodega2.0/tree/main/backend/LaBuenaBodega) - Built with Spring 4
+* [Frontend](https://github.com/Nestorbd/LaBuenaBodega2.0/tree/main/frontend/laBuenaBodega) - Built with Ionic-Angular
+* [DataBase](https://github.com/Nestorbd/LaBuenaBodega2.0/blob/main/backend/Bodega_DB.sql)
+* [Postman-Documentation](https://documenter.getpostman.com/view/12915886/TVRkb8FA)
 
 ## Prerequisites
 * [Git](https://git-scm.com) - You can install it from https://git-scm.com/downloads.
