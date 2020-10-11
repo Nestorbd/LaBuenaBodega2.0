@@ -1,0 +1,20 @@
+package com.nestor.laBuenaBodega.entity.dao;
+
+
+
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
+
+import com.nestor.laBuenaBodega.entity.models.Wine;
+
+public interface IWineDao extends CrudRepository<Wine, Integer> {
+
+	
+	@Modifying
+	@Query(value = "Delete from wine where id_cellar = :idCellar and id = :idWine")
+	Wine deleteById(@Param("idCellar") int idCellar, @Param("idWine") int idWine);
+	
+}

@@ -1,0 +1,5 @@
+package com.nestor.laBuenaBodega.entity.services;
+
+public class CelllarServiceImpl {
+
+}

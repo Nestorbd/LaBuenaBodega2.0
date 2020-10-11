@@ -1,0 +1,15 @@
+package com.nestor.laBuenaBodega.entity.services;
+
+import java.util.List;
+
+
+import com.nestor.laBuenaBodega.entity.models.Wine;
+
+public interface IWineService {
+	
+	
+
+
+	
+
+}

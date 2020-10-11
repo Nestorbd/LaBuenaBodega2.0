@@ -1,0 +1,23 @@
+package com.nestor.laBuenaBodega.entity.services;
+
+import java.util.List;
+
+
+import com.nestor.laBuenaBodega.entity.models.Wine;
+
+public interface IWineService {
+	
+	public List<Wine> getAllWines();
+	
+	public void addWine(Wine wine, int idCellar);
+
+	public void deleteWine(int id, int idCellar);
+
+	public void updateWine(int id, int idCellar, Wine wine);
+
+	public Wine findWineById(int id, int idCellar);
+
+
+	
+
+}

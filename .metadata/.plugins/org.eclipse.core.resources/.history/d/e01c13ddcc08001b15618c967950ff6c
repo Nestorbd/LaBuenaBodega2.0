@@ -1,0 +1,63 @@
+package com.nestor.laBuenaBodega.entity.models;
+
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
+@Entity (name = "cellar")
+public class Cellar implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idCellar;
+	
+	@Column
+	private String name;
+
+	@Column
+	private String adress;
+	
+	@OneToMany (mappedBy = "cellar", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+	private Set<Wine> wine;
+	
+	public Cellar() {}
+	
+	public Cellar(int idCellar, String name, String adress) {
+		super();
+		this.idCellar = idCellar;
+		this.name = name;
+		this.adress = adress;
+	}
+	
+	public int getIdCellar() {
+		return idCellar;
+	}
+	public void setIdCellar(int idCellar) {
+		this.idCellar = idCellar;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getAdress() {
+		return adress;
+	}
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+}

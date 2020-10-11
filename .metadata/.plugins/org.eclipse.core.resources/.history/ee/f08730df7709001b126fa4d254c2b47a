@@ -1,0 +1,70 @@
+package com.nestor.laBuenaBodega.controler;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.nestor.laBuenaBodega.entity.models.Cellar;
+import com.nestor.laBuenaBodega.entity.models.Wine;
+import com.nestor.laBuenaBodega.entity.services.ICellarService;
+import com.nestor.laBuenaBodega.entity.services.IWineService;
+
+
+
+@CrossOrigin(origins = "http://localhost:8100")
+@RestController
+public class WineControler {
+
+	@Autowired
+	IWineService wineService;
+	@Autowired
+	ICellarService cellarService;
+	// Here are the end-points
+	
+	@GetMapping("/api/bodegas")
+	private List<Cellar> getAllCellars(){
+		return cellarService.getAllCellars();
+	}
+
+	@GetMapping("/api/bodegas/{idCellar}/vinos")
+	private List<Wine> getAllWines(@PathVariable(value = "idCellar") int idCellar){
+		cellarService.findCellarById(idCellar);
+		return wineService.getAllWines();
+	}
+
+	@GetMapping("/api/bodegas/{idCellar}")
+	private Cellar findCellarById(@PathVariable(value = "idCellar") int idCellar){
+		return cellarService.findCellarById(idCellar);
+	}
+	
+	@GetMapping("/api/bodegas/{idCellar}/vinos/{idWine}")
+	private Wine findWineById(@PathVariable(value = "idWine") int idWine, @PathVariable(value = "idCellar") int idCellar){
+		return wineService.findWineById(idWine,idCellar);
+	}
+	
+	
+	@PostMapping("/api/bodegas/{idCellar}/vinos")
+
+	private void addWine(Wine wine, @PathVariable(value = "idCellar") int idCellar) {
+		wineService.addWine(wine, idCellar);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:8100")
+	@DeleteMapping("/api/bodegas/{idCellar}/vinos/{idWine}")
+
+	private void deleteWine(@PathVariable(value = "idWine") int idWine,@PathVariable(value = "idCellar") int idCellar ) {
+		wineService.deleteWine(idWine, idCellar);
+	}
+	
+	@PutMapping("/api/bodegas/{idCellar}/vinos/{idWine}")
+	private void updateWine(@PathVariable(value = "idWine") int idWine, @PathVariable(value = "idCellar") int idCellar, Wine wine) {
+		wineService.updateWine(idWine, idCellar, wine);
+	}
+}

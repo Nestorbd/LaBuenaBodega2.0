@@ -1,0 +1,11 @@
+package com.nestor.laBuenaBodega.entity.dao;
+
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.nestor.laBuenaBodega.entity.models.Cellar;
+
+public interface ICellarDao extends CrudRepository<Cellar, Integer> {
+
+	
+}

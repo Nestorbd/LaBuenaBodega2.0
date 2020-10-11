@@ -1,0 +1,31 @@
+package com.nestor.laBuenaBodega.entity.dao;
+
+
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
+
+import com.nestor.laBuenaBodega.entity.models.Wine;
+
+public interface IWineDao extends CrudRepository<Wine, Integer> {
+	
+	@Query(value="select w.id,w.id_cellar,w.name,w.type,w.description,w.price,w.quantity from wine w where w.id_cellar = :idCellar")
+	public List<Wine> findAllWines(@Param("idCellar") int idCellar);
+
+	@Query(value = "select  w.id,w.id_cellar,w.name,w.type,w.description,w.price,w.quantity from wine w where w.id_cellar = :idCellar and w.id = :idWine")
+	public Wine findWineById(@Param("idCellar") int idCellar, @Param("idWine") int idWine);
+	
+	
+	@Modifying
+	@Query(value = "Delete from wine w where w.id_cellar = :idCellar and w.id = :idWine")
+	public  Wine deleteById(@Param("idCellar") int idCellar, @Param("idWine") int idWine);
+	
+	@Modifying
+	@Query(value = "Update wine w set w.name = :name, w.type= :type, w.description = :description, w.price = :price, w.quantity = :quantity where w.id = :idWine and w.id_cellar = :idCellar")
+	public Wine updateWine(@Param("idWine") int idWine,@Param("idCellar") int idCellar,@Param("name") String name, @Param("type") String type, @Param("description") String description,@Param("price") float price, @Param("quantity") int quantity);
+}

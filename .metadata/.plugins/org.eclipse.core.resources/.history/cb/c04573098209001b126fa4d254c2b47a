@@ -1,0 +1,19 @@
+package com.nestor.laBuenaBodega.controler;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.nestor.laBuenaBodega.entity.models.Cellar;
+import com.nestor.laBuenaBodega.entity.services.ICellarService;
+
+public class CellarController {
+	@Autowired
+	ICellarService cellarService;
+	
+	@GetMapping("/api/bodegas")
+	private List<Cellar> getAllCellars(){
+		return cellarService.getAllCellars();
+	}
+}

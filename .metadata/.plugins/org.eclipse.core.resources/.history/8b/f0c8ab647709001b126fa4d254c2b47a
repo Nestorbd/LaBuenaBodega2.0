@@ -1,0 +1,13 @@
+package com.nestor.laBuenaBodega.entity.dao;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
+import com.nestor.laBuenaBodega.entity.models.Cellar;
+
+public interface ICellarDao extends CrudRepository<Cellar, Integer> {
+
+	@Query(value = "select id from cellar where id = :idCellar")
+	public int idCellarExists(@Param("idCellar") int idCellar );
+}

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/wine-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Actualizar vino</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <form [formGroup]="wineForm" (ngSubmit)="onFormSubmit()">
+   
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="name" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tipo</ion-label>
+      <ion-input formControlName="type" type="text" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input formControlName="description" type="text" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input formControlName="price" type="number" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Cantidad</ion-label>
+      <ion-input formControlName="quantity" type="number" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit"  shape="full" expand="block">Actualizar vino</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

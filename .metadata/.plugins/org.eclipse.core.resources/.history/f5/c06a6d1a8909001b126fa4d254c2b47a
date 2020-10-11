@@ -1,0 +1,13 @@
+package com.nestor.laBuenaBodega.entity.services;
+
+import java.util.List;
+
+import com.nestor.laBuenaBodega.entity.models.Cellar;
+
+public interface ICellarService {
+
+	List<Cellar> getAllCellars();
+
+	Cellar findCellarById(int id);
+
+}

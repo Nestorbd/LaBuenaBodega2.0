@@ -1,0 +1,82 @@
+package com.nestor.laBuenaBodega.entity.services;
+
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.nestor.laBuenaBodega.entity.dao.IWineDao;
+import com.nestor.laBuenaBodega.entity.dao.ICellarDao;
+import com.nestor.laBuenaBodega.entity.models.Cellar;
+import com.nestor.laBuenaBodega.entity.models.Wine;
+
+@Service
+public class WineServiceImpl implements IWineService{
+
+	@Autowired
+	IWineDao wineDao;
+	
+	@Autowired
+	ICellarDao cellarDao;
+	
+	@Override
+	public List<Wine> getAllWines() {
+		return (List<Wine>) wineDao.findAll();
+	}
+	
+	@Override
+	public List<Cellar> getAllCellars() {
+		return (List<Cellar>) cellarDao.findAll();
+	}
+	
+	@Override
+	public void addWine(Wine wine, int idCellar){
+		Optional<Cellar> c = cellarDao.findById(idCellar);
+		
+		if(c.isPresent()) {
+			Cellar cellar = c.get();
+			wine.setCellar(cellar);
+			wineDao.save(wine);
+		}
+		
+	}
+
+	@Override
+	public void deleteWine(int idWine, int idCellar) {
+		wineDao.deleteById(idWine);
+	}
+
+	@Override
+	public void updateWine(int idWine, int idCellar, Wine wine) {
+		Optional<Wine> w = wineDao.findById(idWine);
+
+		
+		if (w.isPresent()){
+			wine.setId(id);
+			wineDao.save(wine);
+		}
+	}
+	
+	@Override
+	public Wine findWineById(int id) {
+		Optional<Wine> w = wineDao.findById(id);
+		
+		if(w.isPresent()) {
+			return w.get();
+		}
+		return null;
+	}
+	
+	@Override
+	public Cellar findCellarById(int id) {
+		Optional<Cellar> c = cellarDao.findById(id);
+		
+		if(c.isPresent()) {
+			return c.get();
+		}
+		return null;
+	}
+	
+}

@@ -1,0 +1,27 @@
+package com.nestor.laBuenaBodega.entity.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.nestor.laBuenaBodega.entity.models.Cellar;
+
+public class CelllarServiceImpl {
+	
+	
+	@Override
+	public List<Cellar> getAllCellars() {
+		return (List<Cellar>) cellarDao.findAll();
+	}
+	
+	
+	@Override
+	public Cellar findCellarById(int id) implements ICountryService{
+		Optional<Cellar> c = cellarDao.findById(id);
+		
+		if(c.isPresent()) {
+			return c.get();
+		}
+		return null;
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.nestor.laBuenaBodega.controler;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.nestor.laBuenaBodega.entity.services.ICellarService;
+
+public class CellarController {
+	@Autowired
+	ICellarService cellarService;
+}

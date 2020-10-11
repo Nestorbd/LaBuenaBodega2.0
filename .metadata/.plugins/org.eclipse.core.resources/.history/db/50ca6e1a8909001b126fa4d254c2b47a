@@ -1,0 +1,33 @@
+package com.nestor.laBuenaBodega.entity.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.nestor.laBuenaBodega.entity.dao.ICellarDao;
+import com.nestor.laBuenaBodega.entity.models.Cellar;
+
+public class CelllarServiceImpl implements ICellarService {
+	@Autowired
+	ICellarDao cellarDao;
+	
+	
+
+	@Override
+	public List<Cellar> getAllCellars() {
+		return (List<Cellar>) cellarDao.findAll();
+	}
+	
+	
+	@Override
+	public Cellar findCellarById(int id) {
+		Optional<Cellar> c = cellarDao.findById(id);
+		
+		if(c.isPresent()) {
+			return c.get();
+		}
+		return null;
+	}
+
+}
